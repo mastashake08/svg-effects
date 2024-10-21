@@ -474,7 +474,7 @@
     <filter id="glowPulse">
       <feGaussianBlur stdDeviation="4" result="blur" >
            <animate attributeName="stdDeviation" values="2;6;2" dur="3s" repeatCount="indefinite" />
-         <feGaussianBlur/> 
+      </feGaussianBlur> 
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
