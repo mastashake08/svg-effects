@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg">
-
+<defs>
     <!-- Tech Noir (Inspired by X-Pro II) -->
     <filter id="techNoir">
       <feComponentTransfer>
@@ -177,4 +177,224 @@
                                            0    0    0    1 0" />
       <feConvolveMatrix order="3" kernelMatrix="-1 -1 -1 -1 9 -1 -1 -1 -1" />
     </filter>
+    <!-- Filter 1: Pulse -->
+    <filter id="pulse">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0">
+        <animate attributeName="stdDeviation" from="0" to="5" dur="1s" repeatCount="indefinite" />
+      </feGaussianBlur>
+    </filter>
+
+    <!-- Filter 2: Spin (Approximated with Distortion) -->
+    <filter id="spin">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="10">
+        <animate attributeName="scale" from="0" to="30" dur="1s" repeatCount="indefinite" />
+      </feDisplacementMap>
+    </filter>
+
+    <!-- Filter 3: Bounce (Vertical Displacement) -->
+    <filter id="bounce">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="10">
+        <animate attributeName="scale" from="0" to="20" dur="0.6s" repeatCount="indefinite" />
+      </feDisplacementMap>
+    </filter>
+
+    <!-- Filter 4: Flash (Brightness Pulse) -->
+    <filter id="flash">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1">
+          <animate attributeName="slope" values="1;3;1" dur="0.5s" repeatCount="indefinite" />
+        </feFuncR>
+        <feFuncG type="linear" slope="1">
+          <animate attributeName="slope" values="1;3;1" dur="0.5s" repeatCount="indefinite" />
+        </feFuncB>
+        <feFuncB type="linear" slope="1">
+          <animate attributeName="slope" values="1;3;1" dur="0.5s" repeatCount="indefinite" />
+        </feFuncB>
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Filter 5: Grow/Shrink (Zoom In/Out Effect) -->
+    <filter id="growShrink">
+      <feMorphology operator="dilate" radius="0">
+        <animate attributeName="radius" values="0;5;0" dur="1s" repeatCount="indefinite" />
+      </feMorphology>
+    </filter>
+
+    <!-- Filter 6: Skew (Approximate Skew Effect with Displacement) -->
+    <filter id="skew">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" result="skewNoise" />
+      <feDisplacementMap in="SourceGraphic" in2="skewNoise" scale="10">
+        <animate attributeName="scale" from="0" to="20" dur="1s" repeatCount="indefinite" />
+      </feDisplacementMap>
+    </filter>
+
+    <!-- Filter 7: Zoom In/Out -->
+    <filter id="zoomInOut">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0">
+        <animate attributeName="stdDeviation" values="0;5;0" dur="1.2s" repeatCount="indefinite" />
+      </feGaussianBlur>
+    </filter>
+
+    <!-- Filter 8: Horizontal Slide -->
+    <filter id="horizontalSlide">
+      <feOffset dx="0" dy="0">
+        <animate attributeName="dx" values="0;20;0" dur="0.8s" repeatCount="indefinite" />
+      </feOffset>
+    </filter>
+
+    <!-- Filter 9: Rotate Back and Forth -->
+    <filter id="rotateBackForth">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1.5" intercept="0.5">
+          <animate attributeName="slope" values="1.5;0.5;1.5" dur="2s" repeatCount="indefinite" />
+        </feFuncR>
+        <feFuncG type="linear" slope="1.5" intercept="0.5">
+          <animate attributeName="slope" values="1.5;0.5;1.5" dur="2s" repeatCount="indefinite" />
+        </feFuncG>
+        <feFuncB type="linear" slope="1.5" intercept="0.5">
+          <animate attributeName="slope" values="1.5;0.5;1.5" dur="2s" repeatCount="indefinite" />
+        </feFuncB>
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Filter 10: Pop In/Out -->
+    <filter id="popInOut">
+      <feMorphology operator="dilate" radius="0">
+        <animate attributeName="radius" values="0;10;0" dur="0.6s" repeatCount="indefinite" />
+      </feMorphology>
+    </filter>
+
+    <!-- Filter 11: Wiggle -->
+    <filter id="wiggle">
+      <feTurbulence type="fractalNoise" baseFrequency="0.1" result="wiggleNoise" />
+      <feDisplacementMap in="SourceGraphic" in2="wiggleNoise" scale="10">
+        <animate attributeName="scale" values="0;5;0" dur="0.4s" repeatCount="indefinite" />
+      </feDisplacementMap>
+    </filter>
+
+    <!-- Filter 12: Scale Up/Down -->
+    <filter id="scaleUpDown">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0">
+        <animate attributeName="stdDeviation" values="0;3;0" dur="0.8s" repeatCount="indefinite" />
+      </feGaussianBlur>
+    </filter>
+
+    <!-- Filter 13: Fade In/Out -->
+    <filter id="fadeInOut">
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="1">
+          <animate attributeName="slope" values="0;1;0" dur="1.5s" repeatCount="indefinite" />
+        </feFuncA>
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Filter 14: Jump (Vertical Displacement) -->
+    <filter id="jump">
+      <feOffset dx="0" dy="0">
+        <animate attributeName="dy" values="0;-20;0" dur="0.6s" repeatCount="indefinite" />
+      </feOffset>
+    </filter>
+
+    <!-- Filter 15: Circular Motion (Displacement in Circular Path) -->
+    <filter id="circularMotion">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" result="circularNoise" />
+      <feDisplacementMap in="SourceGraphic" in2="circularNoise" scale="10">
+        <animate attributeName="scale" values="0;20;0" dur="1.5s" repeatCount="indefinite" />
+      </feDisplacementMap>
+    </filter>
+
+    <!-- Filter 16: Pendulum Swing (Horizontal Displacement) -->
+    <filter id="pendulumSwing">
+      <feOffset dx="0" dy="0">
+        <animate attributeName="dx" values="0;-10;10;0" dur="1.8s" repeatCount="indefinite" />
+      </feOffset>
+    </filter>
+
+    <!-- Filter 17: Shake -->
+    <filter id="shake">
+      <feOffset dx="0" dy="0">
+        <animate attributeName="dx" values="0;-5;5;0" dur="0.4s" repeatCount="indefinite" />
+      </feOffset>
+    </filter>
+
+    <!-- Filter 18: Vertical Stretch -->
+    <filter id="verticalStretch">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1.5" />
+        <feFuncG type="linear" slope="1.5" />
+        <feFuncB type="linear" slope="1.5" />
+      </feComponentTransfer>
+      <feMorphology operator="dilate" radius="0">
+        <animate attributeName="radius" values="0;5;0" dur="1s" repeatCount="indefinite" />
+      </feMorphology>
+    </filter>
+
+    <!-- Filter 19: Pulsing Brightness -->
+    <filter id="pulsingBrightness">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1.5">
+          <animate attributeName="slope" values="0.5;2;0.5" dur="1s" repeatCount="indefinite" />
+        </feFuncR>
+        <feFuncG type="linear" slope="1.5">
+          <animate attributeName="slope" values="0.5;2;0.5" dur="1s" repeatCount="indefinite" />
+        </feFuncG>
+        <feFuncB type="linear" slope="1.5">
+          <animate attributeName="slope" values="0.5;2;0.5" dur="1s" repeatCount="indefinite" />
+        </feFuncB>
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Filter 20: Zigzag -->
+    <filter id="zigzag">
+      <feOffset dx="0" dy="0">
+        <animate attributeName="dy" values="0;-10;10;0" dur="0.8s" repeatCount="indefinite" />
+      </feOffset>
+    </filter>
+
+    <!-- Filter 21: Flip -->
+    <filter id="flip">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1.5" intercept="0.5">
+          <animate attributeName="slope" values="1.5;0.5;1.5" dur="2s" repeatCount="indefinite" />
+        </feFuncR>
+        <feFuncG type="linear" slope="1.5" intercept="0.5">
+          <animate attributeName="slope" values="1.5;0.5;1.5" dur="2s" repeatCount="indefinite" />
+        </feFuncG>
+        <feFuncB type="linear" slope="1.5" intercept="0.5">
+          <animate attributeName="slope" values="1.5;0.5;1.5" dur="2s" repeatCount="indefinite" />
+        </feFuncB>
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Filter 22: Fisheye (Distortion Effect) -->
+    <filter id="fisheye">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" result="fisheyeNoise" />
+      <feDisplacementMap in="SourceGraphic" in2="fisheyeNoise" scale="30" />
+    </filter>
+
+    <!-- Filter 23: Glow -->
+    <filter id="glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3">
+        <animate attributeName="stdDeviation" values="3;6;3" dur="1s" repeatCount="indefinite" />
+      </feGaussianBlur>
+    </filter>
+
+    <!-- Filter 24: Wave -->
+    <filter id="wave">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" result="waveNoise" />
+      <feDisplacementMap in="SourceGraphic" in2="waveNoise" scale="15">
+        <animate attributeName="scale" values="10;20;10" dur="1.5s" repeatCount="indefinite" />
+      </feDisplacementMap>
+    </filter>
+
+    <!-- Filter 25: Lens Flare -->
+    <filter id="lensFlare">
+      <feGaussianBlur stdDeviation="0.5" />
+      <feSpecularLighting surfaceScale="2" specularConstant="0.5" specularExponent="15" lighting-color="white">
+        <fePointLight x="50" y="50" z="200" />
+      </feSpecularLighting>
+    </filter>
+</defs>
 </svg>
