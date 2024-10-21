@@ -477,9 +477,10 @@
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
       </feMerge>
-    </filter>
-    <animate xlink:href="#glowPulse" attributeName="stdDeviation" values="2;6;2" dur="3s" repeatCount="indefinite" />
+         <animate attributeName="stdDeviation" values="2;6;2" dur="3s" repeatCount="indefinite" />
 
+    </filter>
+   
     <!-- Filter 22: Edge Detection -->
     <filter id="edgeDetect">
       <feConvolveMatrix order="3" kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1" />
