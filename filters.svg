@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500">
-  <defs>
+<svg xmlns="http://www.w3.org/2000/svg">
+
     <!-- Tech Noir (Inspired by X-Pro II) -->
     <filter id="techNoir">
       <feComponentTransfer>
@@ -177,5 +177,4 @@
                                            0    0    0    1 0" />
       <feConvolveMatrix order="3" kernelMatrix="-1 -1 -1 -1 9 -1 -1 -1 -1" />
     </filter>
-  </defs> 
 </svg>
