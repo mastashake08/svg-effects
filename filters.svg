@@ -1,6 +1,91 @@
 <svg xmlns="http://www.w3.org/2000/svg">
-<defs>
-    <!-- Tech Noir (Inspired by X-Pro II) -->
+  <defs>
+    <!-- Filter: Brightness Boost -->
+    <filter id="brightnessBoost">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1.2" />
+        <feFuncG type="linear" slope="1.2" />
+        <feFuncB type="linear" slope="1.2" />
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Filter: Sepia Tone -->
+    <filter id="sepia">
+      <feColorMatrix type="matrix" values="
+        0.393 0.769 0.189 0 0
+        0.349 0.686 0.168 0 0
+        0.272 0.534 0.131 0 0
+        0     0     0     1 0" />
+    </filter>
+
+    <!-- Filter: Grayscale -->
+    <filter id="grayscale">
+      <feColorMatrix type="matrix" values="
+        0.33 0.33 0.33 0 0
+        0.33 0.33 0.33 0 0
+        0.33 0.33 0.33 0 0
+        0    0    0    1 0" />
+    </filter>
+
+    <!-- Filter: Vignette -->
+    <filter id="vignette">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feOffset dx="0" dy="0" result="offsetBlur" />
+      <feFlood flood-color="black" result="color" />
+      <feComposite in2="offsetBlur" operator="in" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Filter: Invert -->
+    <filter id="invert">
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="1 0" />
+        <feFuncG type="table" tableValues="1 0" />
+        <feFuncB type="table" tableValues="1 0" />
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Filter: Contrast -->
+    <filter id="contrast">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1.5" />
+        <feFuncG type="linear" slope="1.5" />
+        <feFuncB type="linear" slope="1.5" />
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Filter: Blur -->
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="5" />
+    </filter>
+
+    <!-- Filter: Saturation Boost -->
+    <filter id="saturationBoost">
+      <feColorMatrix type="saturate" values="2" />
+    </filter>
+
+    <!-- Filter: Warm Tone -->
+    <filter id="warmTone">
+      <feColorMatrix type="matrix" values="
+        1.2 0.1 0.1 0 0
+        0.1 1.0 0.1 0 0
+        0.1 0.1 0.9 0 0
+        0   0   0   1 0" />
+    </filter>
+
+    <!-- Filter: Cool Tone -->
+    <filter id="coolTone">
+      <feColorMatrix type="matrix" values="
+        0.9 0.1 0.1 0 0
+        0.1 0.9 1.1 0 0
+        0.1 0.1 1.2 0 0
+        0   0   0   1 0" />
+    </filter>
+
+    <!-- Filter: Tech Noir -->
     <filter id="techNoir">
       <feComponentTransfer>
         <feFuncR type="linear" slope="1.5" />
@@ -17,12 +102,13 @@
       </feMerge>
     </filter>
 
-    <!-- Neon Surge (Inspired by Lo-Fi) -->
+    <!-- Filter: Neon Surge -->
     <filter id="neonSurge">
-      <feColorMatrix type="matrix" values="1.2 0 0 0 0
-                                           0 1.1 0 0 0
-                                           0 0 1.5 0 0
-                                           0 0 0 1 0" />
+      <feColorMatrix type="matrix" values="
+        1.2 0 0 0 0
+        0 1.1 0 0 0
+        0 0 1.5 0 0
+        0 0 0 1 0" />
       <feComponentTransfer>
         <feFuncR type="linear" slope="1.2" intercept="-0.2" />
         <feFuncG type="linear" slope="1.2" intercept="-0.2" />
@@ -30,7 +116,7 @@
       </feComponentTransfer>
     </filter>
 
-    <!-- HackerGlow (Inspired by Clarendon) -->
+    <!-- Filter: HackerGlow -->
     <filter id="hackerGlow">
       <feComponentTransfer>
         <feFuncR type="linear" slope="1.5" intercept="0.2" />
@@ -44,12 +130,13 @@
       </feMerge>
     </filter>
 
-    <!-- Binary Frost (Inspired by Hudson) -->
+    <!-- Filter: Binary Frost -->
     <filter id="binaryFrost">
-      <feColorMatrix type="matrix" values="1.0 0.0 0.0 0 0
-                                           0.0 1.0 0.0 0 0
-                                           0.0 0.0 1.5 0 0
-                                           0.0 0.0 0.0 1 0" />
+      <feColorMatrix type="matrix" values="
+        1.0 0.0 0.0 0 0
+        0.0 1.0 0.0 0 0
+        0.0 0.0 1.5 0 0
+        0.0 0.0 0.0 1 0" />
       <feComponentTransfer>
         <feFuncR type="linear" slope="0.8" />
         <feFuncG type="linear" slope="0.8" />
@@ -57,12 +144,13 @@
       </feComponentTransfer>
     </filter>
 
-    <!-- Byte Crush (Inspired by Juno) -->
+    <!-- Filter: Byte Crush -->
     <filter id="byteCrush">
-      <feColorMatrix type="matrix" values="1.5 0.2 0.2 0 0
-                                           0.2 1.2 0.2 0 0
-                                           0.2 0.2 1.0 0 0
-                                           0   0   0   1 0" />
+      <feColorMatrix type="matrix" values="
+        1.5 0.2 0.2 0 0
+        0.2 1.2 0.2 0 0
+        0.2 0.2 1.0 0 0
+        0   0   0   1 0" />
       <feGaussianBlur stdDeviation="1" result="blurred" />
       <feMerge>
         <feMergeNode in="blurred" />
@@ -70,12 +158,13 @@
       </feMerge>
     </filter>
 
-    <!-- Data Drift (Inspired by Earlybird) -->
+    <!-- Filter: Data Drift -->
     <filter id="dataDrift">
-      <feColorMatrix type="matrix" values="1.2 0.9 0.5 0 0
-                                           0.9 1.0 0.6 0 0
-                                           0.6 0.6 0.9 0 0
-                                           0   0   0   1 0" />
+      <feColorMatrix type="matrix" values="
+        1.2 0.9 0.5 0 0
+        0.9 1.0 0.6 0 0
+        0.6 0.6 0.9 0 0
+        0   0   0   1 0" />
       <feComponentTransfer>
         <feFuncR type="linear" slope="0.9" />
         <feFuncG type="linear" slope="0.9" />
@@ -83,12 +172,13 @@
       </feComponentTransfer>
     </filter>
 
-    <!-- Circuit Pulse (Inspired by Valencia) -->
+    <!-- Filter: Circuit Pulse -->
     <filter id="circuitPulse">
-      <feColorMatrix type="matrix" values="1.4 0.4 0.2 0 0
-                                           0.4 1.2 0.4 0 0
-                                           0.2 0.4 1.0 0 0
-                                           0   0   0   1 0" />
+      <feColorMatrix type="matrix" values="
+        1.4 0.4 0.2 0 0
+        0.4 1.2 0.4 0 0
+        0.2 0.4 1.0 0 0
+        0   0   0   1 0" />
       <feGaussianBlur stdDeviation="0.8" result="blurred" />
       <feMerge>
         <feMergeNode in="blurred" />
@@ -96,38 +186,39 @@
       </feMerge>
     </filter>
 
-    <!-- Quantum Burst (Inspired by Amaro) -->
+    <!-- Filter: Quantum Burst -->
     <filter id="quantumBurst">
       <feComponentTransfer>
         <feFuncR type="linear" slope="1.3" intercept="0.2" />
         <feFuncG type="linear" slope="1.3" intercept="0.2" />
         <feFuncB type="linear" slope="1.3" intercept="0.2" />
       </feComponentTransfer>
-      <feColorMatrix type="matrix" values="0.9 0 0 0 0
-                                           0 0.9 0 0 0
-                                           0 0 0.9 0 0
-                                           0 0 0 1 0" />
+      <feColorMatrix type="matrix" values="
+        0.9 0 0 0 0
+        0 0.9 0 0 0
+        0 0 0.9 0 0
+        0 0 0 1 0" />
     </filter>
 
-    <!-- Additional TikTok-like Effects -->
-    <!-- TV Turn-Off Effect -->
+    <!-- Filter: TV Turn-Off Effect -->
     <filter id="tvTurnOff">
       <feComponentTransfer>
         <feFuncA type="table" tableValues="1 0">
-          <animate attributeName="tableValues" values="1;0.2;0" dur="1s" begin="0s" repeatCount="1" fill="freeze"/>
+          <animate attributeName="tableValues" values="1;0.2;0" dur="1s" begin="0s" repeatCount="1" fill="freeze" />
         </feFuncA>
       </feComponentTransfer>
       <feGaussianBlur in="SourceGraphic" stdDeviation="0 0">
-        <animate attributeName="stdDeviation" values="0 0;0 5;0 100" dur="1s" begin="0s" fill="freeze" repeatCount="1"/>
+        <animate attributeName="stdDeviation" values="0 0;0 5;0 100" dur="1s" begin="0s" fill="freeze" repeatCount="1" />
       </feGaussianBlur>
     </filter>
 
-    <!-- Color Pop Filter -->
+    <!-- Filter: Color Pop -->
     <filter id="colorPop">
-      <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0 
-                                           0.33 0.33 0.33 0 0 
-                                           0.33 0.33 0.33 0 0 
-                                           0    0    0    1 0" result="grayscale" />
+      <feColorMatrix type="matrix" values="
+        0.33 0.33 0.33 0 0
+        0.33 0.33 0.33 0 0
+        0.33 0.33 0.33 0 0
+        0    0    0    1 0" result="grayscale" />
       <feComponentTransfer>
         <feFuncR type="linear" slope="1.5" />
         <feFuncG type="linear" slope="0.5" />
@@ -135,15 +226,7 @@
       </feComponentTransfer>
     </filter>
 
-    <!-- Grayscale Filter -->
-    <filter id="grayscale">
-      <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0
-                                           0.33 0.33 0.33 0 0
-                                           0.33 0.33 0.33 0 0
-                                           0    0    0    1 0" />
-    </filter>
-
-    <!-- High Contrast Black & White -->
+    <!-- Filter: High Contrast Black & White -->
     <filter id="highContrastBW">
       <feComponentTransfer>
         <feFuncR type="linear" slope="2" intercept="-1" />
@@ -152,12 +235,13 @@
       </feComponentTransfer>
     </filter>
 
-    <!-- Soft Black & White -->
+    <!-- Filter: Soft Black & White -->
     <filter id="softBW">
-      <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0
-                                           0.33 0.33 0.33 0 0
-                                           0.33 0.33 0.33 0 0
-                                           0    0    0    1 0" />
+      <feColorMatrix type="matrix" values="
+        0.33 0.33 0.33 0 0
+        0.33 0.33 0.33 0 0
+        0.33 0.33 0.33 0 0
+        0    0    0    1 0" />
       <feComponentTransfer>
         <feFuncR type="linear" slope="1.1" />
         <feFuncG type="linear" slope="1.1" />
@@ -165,26 +249,37 @@
       </feComponentTransfer>
     </filter>
 
-    <!-- Black & White with Blur -->
+    <!-- Filter: Black & White with Blur -->
     <filter id="bwWithBlur">
-      <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0 0 0 1 0" /> <feGaussianBlur stdDeviation="2" /> 
+      <feColorMatrix type="matrix" values="
+        0.33 0.33 0.33 0 0
+        0.33 0.33 0.33 0 0
+        0.33 0.33 0.33 0 0
+        0    0    0    1 0" />
+      <feGaussianBlur stdDeviation="2" />
     </filter>
-     <!-- Sharp Black & White -->
+
+    <!-- Filter: Sharp Black & White -->
     <filter id="sharpBW">
-      <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0
-                                           0.33 0.33 0.33 0 0
-                                           0.33 0.33 0.33 0 0
-                                           0    0    0    1 0" />
-      <feConvolveMatrix order="3" kernelMatrix="-1 -1 -1 -1 9 -1 -1 -1 -1" />
+      <feColorMatrix type="matrix" values="
+        0.33 0.33 0.33 0 0
+        0.33 0.33 0.33 0 0
+        0.33 0.33 0.33 0 0
+        0    0    0    1 0" />
+      <feConvolveMatrix order="3" kernelMatrix="
+        -1 -1 -1
+        -1  9 -1
+        -1 -1 -1" />
     </filter>
-    <!-- Filter 1: Pulse -->
+
+    <!-- Filter: Pulse -->
     <filter id="pulse">
       <feGaussianBlur in="SourceGraphic" stdDeviation="0">
         <animate attributeName="stdDeviation" from="0" to="5" dur="1s" repeatCount="indefinite" />
       </feGaussianBlur>
     </filter>
 
-    <!-- Filter 2: Spin (Approximated with Distortion) -->
+    <!-- Filter: Spin -->
     <filter id="spin">
       <feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise" />
       <feDisplacementMap in="SourceGraphic" in2="noise" scale="10">
@@ -192,7 +287,7 @@
       </feDisplacementMap>
     </filter>
 
-    <!-- Filter 3: Bounce (Vertical Displacement) -->
+    <!-- Filter: Bounce -->
     <filter id="bounce">
       <feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise" />
       <feDisplacementMap in="SourceGraphic" in2="noise" scale="10">
@@ -200,16 +295,14 @@
       </feDisplacementMap>
     </filter>
 
-   
-
-    <!-- Filter 5: Grow/Shrink (Zoom In/Out Effect) -->
+    <!-- Filter: Grow/Shrink -->
     <filter id="growShrink">
       <feMorphology operator="dilate" radius="0">
         <animate attributeName="radius" values="0;5;0" dur="1s" repeatCount="indefinite" />
       </feMorphology>
     </filter>
 
-    <!-- Filter 6: Skew (Approximate Skew Effect with Displacement) -->
+    <!-- Filter: Skew -->
     <filter id="skew">
       <feTurbulence type="fractalNoise" baseFrequency="0.05" result="skewNoise" />
       <feDisplacementMap in="SourceGraphic" in2="skewNoise" scale="10">
@@ -217,21 +310,21 @@
       </feDisplacementMap>
     </filter>
 
-    <!-- Filter 7: Zoom In/Out -->
+    <!-- Filter: Zoom In/Out -->
     <filter id="zoomInOut">
       <feGaussianBlur in="SourceGraphic" stdDeviation="0">
         <animate attributeName="stdDeviation" values="0;5;0" dur="1.2s" repeatCount="indefinite" />
       </feGaussianBlur>
     </filter>
 
-    <!-- Filter 8: Horizontal Slide -->
+    <!-- Filter: Horizontal Slide -->
     <filter id="horizontalSlide">
       <feOffset dx="0" dy="0">
         <animate attributeName="dx" values="0;20;0" dur="0.8s" repeatCount="indefinite" />
       </feOffset>
     </filter>
 
-    <!-- Filter 9: Rotate Back and Forth -->
+    <!-- Filter: Rotate Back and Forth -->
     <filter id="rotateBackForth">
       <feComponentTransfer>
         <feFuncR type="linear" slope="1.5" intercept="0.5">
@@ -246,14 +339,14 @@
       </feComponentTransfer>
     </filter>
 
-    <!-- Filter 10: Pop In/Out -->
+    <!-- Filter: Pop In/Out -->
     <filter id="popInOut">
       <feMorphology operator="dilate" radius="0">
         <animate attributeName="radius" values="0;10;0" dur="0.6s" repeatCount="indefinite" />
       </feMorphology>
     </filter>
 
-    <!-- Filter 11: Wiggle -->
+    <!-- Filter: Wiggle -->
     <filter id="wiggle">
       <feTurbulence type="fractalNoise" baseFrequency="0.1" result="wiggleNoise" />
       <feDisplacementMap in="SourceGraphic" in2="wiggleNoise" scale="10">
@@ -261,14 +354,14 @@
       </feDisplacementMap>
     </filter>
 
-    <!-- Filter 12: Scale Up/Down -->
+    <!-- Filter: Scale Up/Down -->
     <filter id="scaleUpDown">
       <feGaussianBlur in="SourceGraphic" stdDeviation="0">
         <animate attributeName="stdDeviation" values="0;3;0" dur="0.8s" repeatCount="indefinite" />
       </feGaussianBlur>
     </filter>
 
-    <!-- Filter 13: Fade In/Out -->
+    <!-- Filter: Fade In/Out -->
     <filter id="fadeInOut">
       <feComponentTransfer>
         <feFuncA type="linear" slope="1">
@@ -277,14 +370,14 @@
       </feComponentTransfer>
     </filter>
 
-    <!-- Filter 14: Jump (Vertical Displacement) -->
+    <!-- Filter: Jump -->
     <filter id="jump">
       <feOffset dx="0" dy="0">
         <animate attributeName="dy" values="0;-20;0" dur="0.6s" repeatCount="indefinite" />
       </feOffset>
     </filter>
 
-    <!-- Filter 15: Circular Motion (Displacement in Circular Path) -->
+    <!-- Filter: Circular Motion -->
     <filter id="circularMotion">
       <feTurbulence type="fractalNoise" baseFrequency="0.02" result="circularNoise" />
       <feDisplacementMap in="SourceGraphic" in2="circularNoise" scale="10">
@@ -292,21 +385,21 @@
       </feDisplacementMap>
     </filter>
 
-    <!-- Filter 16: Pendulum Swing (Horizontal Displacement) -->
+    <!-- Filter: Pendulum Swing -->
     <filter id="pendulumSwing">
       <feOffset dx="0" dy="0">
         <animate attributeName="dx" values="0;-10;10;0" dur="1.8s" repeatCount="indefinite" />
       </feOffset>
     </filter>
 
-    <!-- Filter 17: Shake -->
+    <!-- Filter: Shake -->
     <filter id="shake">
       <feOffset dx="0" dy="0">
         <animate attributeName="dx" values="0;-5;5;0" dur="0.4s" repeatCount="indefinite" />
       </feOffset>
     </filter>
 
-    <!-- Filter 18: Vertical Stretch -->
+    <!-- Filter: Vertical Stretch -->
     <filter id="verticalStretch">
       <feComponentTransfer>
         <feFuncR type="linear" slope="1.5" />
@@ -318,7 +411,7 @@
       </feMorphology>
     </filter>
 
-    <!-- Filter 19: Pulsing Brightness -->
+    <!-- Filter: Pulsing Brightness -->
     <filter id="pulsingBrightness">
       <feComponentTransfer>
         <feFuncR type="linear" slope="1.5">
@@ -333,14 +426,14 @@
       </feComponentTransfer>
     </filter>
 
-    <!-- Filter 20: Zigzag -->
+    <!-- Filter: Zigzag -->
     <filter id="zigzag">
       <feOffset dx="0" dy="0">
         <animate attributeName="dy" values="0;-10;10;0" dur="0.8s" repeatCount="indefinite" />
       </feOffset>
     </filter>
 
-    <!-- Filter 21: Flip -->
+    <!-- Filter: Flip -->
     <filter id="flip">
       <feComponentTransfer>
         <feFuncR type="linear" slope="1.5" intercept="0.5">
@@ -355,20 +448,30 @@
       </feComponentTransfer>
     </filter>
 
-    <!-- Filter 22: Fisheye (Distortion Effect) -->
-    <filter id="fisheye">
+    <!-- Filter: Fisheye Distortion -->
+    <filter id="fisheyeDistortion">
       <feTurbulence type="fractalNoise" baseFrequency="0.05" result="fisheyeNoise" />
       <feDisplacementMap in="SourceGraphic" in2="fisheyeNoise" scale="30" />
     </filter>
 
-    <!-- Filter 23: Glow -->
+    <!-- Filter: Fisheye Lighting -->
+    <filter id="fisheyeLighting">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />
+      <feOffset dx="5" dy="5" result="offsetBlur" />
+      <feSpecularLighting surfaceScale="5" specularConstant="0.8" specularExponent="10" lighting-color="white" result="specOut">
+        <fePointLight x="100" y="100" z="200" />
+      </feSpecularLighting>
+      <feComposite in="specOut" in2="SourceAlpha" operator="in" />
+    </filter>
+
+    <!-- Filter: Glow -->
     <filter id="glow">
       <feGaussianBlur in="SourceGraphic" stdDeviation="3">
         <animate attributeName="stdDeviation" values="3;6;3" dur="1s" repeatCount="indefinite" />
       </feGaussianBlur>
     </filter>
 
-    <!-- Filter 24: Wave -->
+    <!-- Filter: Wave -->
     <filter id="wave">
       <feTurbulence type="fractalNoise" baseFrequency="0.02" result="waveNoise" />
       <feDisplacementMap in="SourceGraphic" in2="waveNoise" scale="15">
@@ -376,28 +479,38 @@
       </feDisplacementMap>
     </filter>
 
-    <!-- Filter 25: Lens Flare -->
-    <filter id="lensFlare">
+    <!-- Filter: Lens Flare 1 -->
+    <filter id="lensFlare1">
       <feGaussianBlur stdDeviation="0.5" />
       <feSpecularLighting surfaceScale="2" specularConstant="0.5" specularExponent="15" lighting-color="white">
         <fePointLight x="50" y="50" z="200" />
       </feSpecularLighting>
     </filter>
 
-     <!-- Filter 4: Flash (Brightness Pulse) -->
+    <!-- Filter: Lens Flare 2 -->
+    <filter id="lensFlare2">
+      <feGaussianBlur stdDeviation="1.5" result="blurOut" />
+      <feSpecularLighting surfaceScale="5" specularConstant="1" specularExponent="15" lighting-color="white">
+        <fePointLight x="50" y="50" z="300" />
+      </feSpecularLighting>
+    </filter>
+
+    <!-- Filter: Flash -->
     <filter id="flash">
       <feComponentTransfer>
         <feFuncR type="linear" slope="1">
           <animate attributeName="slope" values="1;3;1" dur="0.5s" repeatCount="indefinite" />
         </feFuncR>
-        <feFuncB type="linear" slope="1">
-          <animate attributeName="slope" values="1;3;1" dur="0.5s" repeatCount="indefinite" />
-        </feFuncB>
         <feFuncG type="linear" slope="1">
           <animate attributeName="slope" values="1;3;1" dur="0.5s" repeatCount="indefinite" />
         </feFuncG>
+        <feFuncB type="linear" slope="1">
+          <animate attributeName="slope" values="1;3;1" dur="0.5s" repeatCount="indefinite" />
+        </feFuncB>
       </feComponentTransfer>
     </filter>
+
+    <!-- Filter: Shadow Glow -->
     <filter id="shadowGlow">
       <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur" />
       <feOffset in="blur" dx="5" dy="5" result="offsetBlur" />
@@ -407,12 +520,12 @@
       </feMerge>
     </filter>
 
-    <!-- Filter 12: Hue Rotate -->
+    <!-- Filter: Hue Rotate -->
     <filter id="hueRotate">
       <feColorMatrix type="hueRotate" values="90" />
     </filter>
 
-    <!-- Filter 13: Neon Glow -->
+    <!-- Filter: Neon Glow -->
     <filter id="neonGlow">
       <feGaussianBlur stdDeviation="3.5" result="coloredBlur" />
       <feMerge>
@@ -421,7 +534,7 @@
       </feMerge>
     </filter>
 
-    <!-- Filter 14: Pixelate -->
+    <!-- Filter: Pixelate -->
     <filter id="pixelate">
       <feFlood flood-color="black" result="bg" />
       <feComposite in="SourceGraphic" in2="bg" operator="in" />
@@ -429,72 +542,55 @@
       <feDisplacementMap in="SourceGraphic" in2="pixel" scale="20" />
     </filter>
 
-    <!-- Filter 15: Wave Distortion -->
+    <!-- Filter: Wave Distortion -->
     <filter id="waveDistortion">
       <feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise" />
       <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" />
     </filter>
 
-    <!-- Filter 16: Fisheye -->
-    <filter id="fisheye">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />
-      <feOffset dx="5" dy="5" result="offsetBlur" />
-      <feSpecularLighting surfaceScale="5" specularConstant="0.8" specularExponent="10" lighting-color="white" result="specOut">
-        <fePointLight x="100" y="100" z="200" />
-      </feSpecularLighting>
-      <feComposite in="specOut" in2="SourceAlpha" operator="in" />
-    </filter>
-
-    <!-- Filter 17: Lens Flare -->
-    <filter id="lensFlare">
-      <feGaussianBlur stdDeviation="1.5" result="blurOut" />
-      <feSpecularLighting surfaceScale="5" specularConstant="1" specularExponent="15" lighting-color="white">
-        <fePointLight x="50" y="50" z="300" />
-      </feSpecularLighting>
-    </filter>
-
-    <!-- Filter 18: Ripple -->
+    <!-- Filter: Ripple -->
     <filter id="ripple">
       <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="ripple" />
       <feDisplacementMap in="SourceGraphic" in2="ripple" scale="15" />
     </filter>
 
-    <!-- Filter 19: Motion Blur -->
+    <!-- Filter: Motion Blur -->
     <filter id="motionBlur">
       <feGaussianBlur stdDeviation="5 0" />
     </filter>
 
-    <!-- Filter 20: Bloom Effect -->
+    <!-- Filter: Bloom Effect -->
     <filter id="bloomEffect">
       <feGaussianBlur stdDeviation="3" result="blur" />
       <feBlend in="SourceGraphic" in2="blur" mode="screen" />
     </filter>
 
-    <!-- Filter 21: Glow Pulse (Animated) -->
+    <!-- Filter: Glow Pulse -->
     <filter id="glowPulse">
-      <feGaussianBlur stdDeviation="4" result="blur" >
-           <animate attributeName="stdDeviation" values="2;6;2" dur="3s" repeatCount="indefinite" />
-      </feGaussianBlur> 
+      <feGaussianBlur stdDeviation="4" result="blur">
+        <animate attributeName="stdDeviation" values="2;6;2" dur="3s" repeatCount="indefinite" />
+      </feGaussianBlur>
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
       </feMerge>
-        
-
     </filter>
-   
-    <!-- Filter 22: Edge Detection -->
+
+    <!-- Filter: Edge Detection -->
     <filter id="edgeDetect">
-      <feConvolveMatrix order="3" kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1" />
+      <feConvolveMatrix order="3" kernelMatrix="
+        -1 -1 -1
+        -1  8 -1
+        -1 -1 -1" />
     </filter>
 
-    <!-- Filter 23: Kaleidoscope -->
+    <!-- Filter: Kaleidoscope -->
     <filter id="kaleidoscope">
       <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="noise" />
       <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" />
     </filter>
 
-    <!-- Filter 24: Tilt Shift -->
+    <!-- Filter: Tilt Shift -->
     <filter id="tiltShift">
       <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur" />
       <feComponentTransfer>
@@ -502,38 +598,40 @@
       </feComponentTransfer>
     </filter>
 
-    <!-- Filter 25: Glow Edges -->
+    <!-- Filter: Glow Edges -->
     <filter id="glowEdges">
       <feMorphology operator="dilate" radius="1" />
       <feGaussianBlur stdDeviation="2" />
       <feComposite operator="out" in2="SourceGraphic" />
     </filter>
 
-    <!-- Filter 26: Old Film Grain -->
+    <!-- Filter: Old Film Grain -->
     <filter id="oldFilmGrain">
       <feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise" />
-      <feColorMatrix type="matrix" values="1 0 0 0 0
-                                           0 1 0 0 0
-                                           0 0 1 0 0
-                                           0 0 0 0.8 0" />
+      <feColorMatrix type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 0.8 0" />
       <feBlend in="SourceGraphic" in2="noise" mode="multiply" />
     </filter>
 
-    <!-- Filter 27: Soft Focus -->
+    <!-- Filter: Soft Focus -->
     <filter id="softFocus">
       <feGaussianBlur stdDeviation="2.5" />
       <feBlend in="SourceGraphic" mode="screen" />
     </filter>
 
-    <!-- Filter 28: Polaroid Fade -->
+    <!-- Filter: Polaroid Fade -->
     <filter id="polaroidFade">
-      <feColorMatrix type="matrix" values="1.2 0 0 0 0
-                                           0.9 1.0 0 0 0
-                                           0.6 0.7 0.9 0 0
-                                           0   0   0   1 0" />
+      <feColorMatrix type="matrix" values="
+        1.2 0   0   0 0
+        0.9 1.0 0   0 0
+        0.6 0.7 0.9 0 0
+        0   0   0   1 0" />
     </filter>
 
-    <!-- Filter 29: Cartoon Effect -->
+    <!-- Filter: Cartoon Effect -->
     <filter id="cartoonEffect">
       <feComponentTransfer>
         <feFuncR type="discrete" tableValues="0 1" />
@@ -543,7 +641,7 @@
       <feMorphology operator="dilate" radius="1" />
     </filter>
 
-    <!-- Filter 30: Gradient Overlay -->
+    <!-- Filter: Gradient Overlay -->
     <filter id="gradientOverlay">
       <feComponentTransfer>
         <feFuncR type="linear" slope="0.8" intercept="0.1" />
@@ -551,5 +649,5 @@
         <feFuncB type="linear" slope="0.3" intercept="0.3" />
       </feComponentTransfer>
     </filter>
-</defs>
+  </defs>
 </svg>
